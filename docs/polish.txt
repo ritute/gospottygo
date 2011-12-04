@@ -1,0 +1,5 @@
+STEPS TO PERFORM BEFORE HANDING PROJECT IN
+
+1. Make sure python files are appropriately names (lowercase, etc.)
+2. Unit tests for everything
+    - helpers/cursorhelpers.py

@@ -1,0 +1,2 @@
+def count_rows(cursor):
+    return len(list(cursor))

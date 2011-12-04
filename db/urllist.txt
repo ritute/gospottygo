@@ -1,0 +1,7 @@
+http://google.ca
+http://www.wikipedia.org/
+http://ca.yahoo.com/
+http://www.bing.com/
+https://news.ycombinator.com/
+http://www.youtube.com/
+http://www.utoronto.ca/
