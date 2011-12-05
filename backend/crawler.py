@@ -27,7 +27,7 @@ from collections import defaultdict
 import re
 import sqlite3
 
-import helpers.cursorhelpers as db 
+import cursorhelpers as db 
 
 
 def attr(elem, attr):
@@ -150,12 +150,12 @@ class crawler(object):
         if word in self._word_id_cache:
             return self._word_id_cache[word]
         
-        # TODO: 1) add the word to the lexicon, if that fails, then the
+        # TODO DONE: 1) add the word to the lexicon, if that fails, then the
         #          word is in the lexicon
         #       2) query the lexicon for the id assigned to this word, 
         #          store it in the word id cache, and return the id.
 
-        word_id = self._mock_insert_word(word)
+        word_id = db.Lexicon.get_word_id_add(word) 
         self._word_id_cache[word] = word_id
         return word_id
     
@@ -164,11 +164,11 @@ class crawler(object):
         if url in self._doc_id_cache:
             return self._doc_id_cache[url]
         
-        # TODO: just like word id cache, but for documents. if the document
+        # TODO DONE: just like word id cache, but for documents. if the document
         #       doesn't exist in the db then only insert the url and leave
         #       the rest to their defaults.
         
-        doc_id = self._mock_insert_document(url)
+        doc_id = db.Document.get_word_id_add(url)
         self._doc_id_cache[url] = doc_id
         return doc_id
     
@@ -342,11 +342,12 @@ class crawler(object):
 
 if __name__ == "__main__":
     conn = sqlite3.connect('../db/repo.db')
-    db.cursor = conn.cursor() #set the cursor variable in cursorshelper
+    db.connection = conn #set the connection variable in cursorshelper
 
-    print db.Lexicon.get_word_id("test")
-    print db.Lexicon.insert("test")
-    print db.Lexicon.get_word_id("test")
+    print db.Link.increment_and_get_freq(1,2)
+
+    print db.Document.get_word_id_add("http://testingalink.com")
+
     import sys; sys.exit()
 
     bot = crawler(cursor, "urls.txt")
