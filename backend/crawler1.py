@@ -43,7 +43,7 @@ class crawler(object):
         self.is_indexed[page] = True
 
         # Add page to document table
-        db.Lexicon.insert(page)
+        document_id = db.Document.get_word_id_add(page)
 
         text = self._get_text_only(soup)
         words = self._separate_words(text)
@@ -51,7 +51,9 @@ class crawler(object):
         for word in words:
             if word in IGNOREWORDS : continue
 
-            db.Lexicon.insert(word)
+            word_id = db.Lexicon.get_word_id_add(word)
+
+            db.DocWordIndex.increment_and_get_freq(document_id,word_id)
 
     #=== ADD A LINK ==============================================================
     def _add_link(self, page, url, linktext):
@@ -63,7 +65,7 @@ class crawler(object):
   
     #=== CRAWL THE WEB!! =========================================================
     def crawl(self, depth = 2):
-        pages = [line for line in file('../db/urllist.txt')]
+        pages = [line.split("|")[0] for line in file('../db/urllist.txt')]
         for i in range(depth):
             newpages = {}
             for page in pages:
@@ -94,5 +96,10 @@ class crawler(object):
 if __name__=="__main__":
     conn = sqlite3.connect('../db/repo.db')
     db.connection = conn #set the connection variable in cursorshelper
-    
-    crawler().crawl()
+   
+    #crawler().crawl()
+
+    #index
+    import pagerank
+    pagerank.connection = conn
+    print pagerank.populate_page_rank()

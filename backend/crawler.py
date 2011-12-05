@@ -344,9 +344,6 @@ if __name__ == "__main__":
     conn = sqlite3.connect('../db/repo.db')
     db.connection = conn #set the connection variable in cursorshelper
 
-    print db.Link.increment_and_get_freq(1,2)
-
-    print db.Document.get_word_id_add("http://testingalink.com")
 
     import sys; sys.exit()
 

@@ -34,6 +34,12 @@ class DocLexBaseDB(object):
 
     #static methods
     @classmethod
+    def get_all_words(cls):
+        cursor = connection.cursor()
+        cursor.execute("SELECT * FROM %s"%cls.DBNAME)
+        return list(cursor)
+
+    @classmethod
     def insert(cls,word):
         """Return True if success and False if failure"""
         if len(word)>cls.MAXWORDLEN:
@@ -86,20 +92,26 @@ class Document(DocLexBaseDB):
     VALNAME = 'url'
     MAXWORDLEN = 255 
 
-class Link(object):
+
+class LinkWordIndexBaseDB(object):
+    """The doc_word_index and link databases are very similar
+    This class fulfills the functionalities of both. Variable names 
+    and comments are named and described corresponding to the link 
+    table for clarity. Generalizing all the naming proved to be too confusing.
+    """
     @classmethod
     def increment_and_get_freq(cls, from_doc_id, to_doc_id):
         """Returns the new frequency"""
         cursor = connection.cursor()
         try:
-            cursor.execute('select freq from link where from_doc_id=? and to_doc_id=?',(from_doc_id,to_doc_id))
+            cursor.execute('select freq from %s where %s=? and %s=?'%(cls.DBNAME,cls.FIELD1,cls.FIELD2),(from_doc_id,to_doc_id))
         finally:
             cursor_list = list(cursor)
 
         if len(cursor_list)<1:
             #key doesn't exist - insert it
             new_cursor = connection.cursor()
-            cursor.execute('insert into link values (?,?,?)',(from_doc_id, to_doc_id, 1))
+            cursor.execute('insert into %s values (?,?,?)'%cls.DBNAME,(from_doc_id, to_doc_id, 1))
             connection.commit()
             return 1
         else: 
@@ -107,8 +119,17 @@ class Link(object):
             old_freq = cursor_list[0][0]
             new_freq = old_freq + 1
 
-            cursor.execute('update link set freq=? where from_doc_id=? and to_doc_id=?',(new_freq,from_doc_id,to_doc_id))
+            cursor.execute('update %s set freq=? where %s=? and %s=?'%(cls.DBNAME,cls.FIELD1,cls.FIELD2),(new_freq,from_doc_id,to_doc_id))
             connection.commit()
 
             return new_freq
          
+class Link(LinkWordIndexBaseDB):
+    DBNAME = 'link'
+    FIELD1 = 'from_doc_id'
+    FIELD2 = 'to_doc_id'
+
+class DocWordIndex(LinkWordIndexBaseDB):
+    DBNAME = 'doc_word_index'
+    FIELD1 = 'doc_id'
+    FIELD2 = 'word_id'
