@@ -1,26 +1,19 @@
+import __init__
 import urllib2
-from BeautifulSoup import *
+from helpers.BeautifulSoup import *
 from urlparse import urljoin
-from pysqlite2 import dbapi2 as sqlite
+import sqlite3 
+import cursorhelpers as db
 
 IGNOREWORDS = {'the':1,'of':1,'to':1,'and':1,'a':1,'in':1,'is':1,'it':1}
 
 class crawler(object): 
     def __init__(self):
         self.is_indexed = {} # remember if a page has been indexed
-        # Create and open database connection
-        self.con = sqlite.connect("repo.db")  
-        self.cur = self.con.cursor()
-        # Create tables
-        self.cur.execute('''create table lexicon (
-                              id integer primary key asc autoincrement, 
-                              word varchar(100) unique not null
-                          )''')
-        self.cur.execute('''create table document (
-                              id integer primary key asc autoincrement, 
-                              uri varchar(255) unique not null
-                          )''')
-        self.con.commit()
+    
+        #reset tables
+        db.DataBase.drop_tables()
+        db.DataBase.create_tables()
 
 
     #=== GET TEXT ONLY ===========================================================
@@ -50,29 +43,27 @@ class crawler(object):
         self.is_indexed[page] = True
 
         # Add page to document table
-        self.cur.execute('insert into document (uri) values (?)', [(page)])
+        db.Lexicon.insert(page)
 
         text = self._get_text_only(soup)
         words = self._separate_words(text)
 
         for word in words:
             if word in IGNOREWORDS : continue
-        # TODO: canonocalize ...
-        # Add word to lexicon table
-        #self.cur.execute('insert into lexicon (word) values (?)', [(word)])
 
-        self.con.commit()
-
+            db.Lexicon.insert(word)
 
     #=== ADD A LINK ==============================================================
     def _add_link(self, page, url, linktext):
-        # modify here to build graph
-        print "%s =====================> %s\n" % (page, url)
-  
+        id1 = db.Document.get_word_id_add(page)
+        id2 = db.Document.get_word_id_add(url)
+
+        freq = db.Link.increment_and_get_freq(id1, id2)
+
   
     #=== CRAWL THE WEB!! =========================================================
     def crawl(self, depth = 2):
-        pages = [line for line in file('urllist.txt')]
+        pages = [line for line in file('../db/urllist.txt')]
         for i in range(depth):
             newpages = {}
             for page in pages:
@@ -82,6 +73,7 @@ class crawler(object):
                     print "Could not open %s" % page
                     continue
                 try:
+                    #import pdb; pdb.set_trace()
                     soup = BeautifulSoup(c.read())
                     self._index_page(page, soup)
 
@@ -90,7 +82,7 @@ class crawler(object):
                         if ('href' in dict(link.attrs)):
                             url = urljoin(page, link['href'])
                         if url.find("'") != -1: continue
-                            url = url.split('#')[0]  # remove location portion
+                        url = url.split('#')[0]  # remove location portion
                         if url[0:4] == 'http' and url in self.is_indexed:
                             newpages[url] = 1
                         linktext = self._get_text_only(link)
@@ -98,3 +90,9 @@ class crawler(object):
                 except:
                     print "Could not parse page %s" % page
             pages = newpages
+
+if __name__=="__main__":
+    conn = sqlite3.connect('../db/repo.db')
+    db.connection = conn #set the connection variable in cursorshelper
+    
+    crawler().crawl()

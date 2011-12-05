@@ -6,6 +6,24 @@ connection = None
 
 """In general, Inserts return true or false. Searches return a value or None"""
 
+class DataBase(object):
+    
+    @classmethod
+    def drop_tables(cls):
+        connection.cursor().execute("DROP TABLE lexicon")
+        connection.cursor().execute("DROP TABLE document")
+        connection.cursor().execute("DROP TABLE link")
+        connection.cursor().execute("DROP TABLE doc_word_index")
+        connection.commit()
+
+    @classmethod
+    def create_tables(cls):
+        connection.cursor().execute('CREATE TABLE lexicon ( word_id INTEGER PRIMARY KEY ASC AUTOINCREMENT, word VARCHAR(100) UNIQUE NOT NULL)')
+        connection.cursor().execute('CREATE TABLE document (url_id INTEGER PRIMARY KEY ASC AUTOINCREMENT, url VARCHAR(255) UNIQUE NOT NULL)')
+        connection.cursor().execute('CREATE TABLE link ( from_doc_id INTEGER REFERENCES document(url_id), to_doc_id INTEGER REFERENCES document(url_id), freq UNSIGNED INTEGER, PRIMARY KEY(from_doc_id, to_doc_id))')
+        connection.cursor().execute('CREATE TABLE doc_word_index ( doc_id INTEGER REFERENCES document(url_id), word_id INTEGER REFERENCES lexicon(word_id), freq UNSIGNED INTEGER, PRIMARY KEY(doc_id, word_id))')
+        connection.commit()
+        
 
 class DocLexBaseDB(object):
     """The document and lexicon databases are very similar
@@ -85,7 +103,12 @@ class Link(object):
             connection.commit()
             return 1
         else: 
-            print list(cursor)
             #key did exist
-            return list(cursor)[0][0]
+            old_freq = cursor_list[0][0]
+            new_freq = old_freq + 1
+
+            cursor.execute('update link set freq=? where from_doc_id=? and to_doc_id=?',(new_freq,from_doc_id,to_doc_id))
+            connection.commit()
+
+            return new_freq
          
