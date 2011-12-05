@@ -20,7 +20,7 @@ class DataBase(object):
     def create_tables(cls):
         connection.cursor().execute('CREATE TABLE lexicon ( word_id INTEGER PRIMARY KEY ASC AUTOINCREMENT, word VARCHAR(100) UNIQUE NOT NULL)')
         connection.cursor().execute('CREATE TABLE document (url_id INTEGER PRIMARY KEY ASC AUTOINCREMENT, url VARCHAR(255) UNIQUE NOT NULL)')
-        connection.cursor().execute('CREATE TABLE link ( from_doc_id INTEGER REFERENCES document(url_id), to_doc_id INTEGER REFERENCES document(url_id), freq UNSIGNED INTEGER, PRIMARY KEY(from_doc_id, to_doc_id))')
+        connection.cursor().execute('CREATE TABLE link ( from_doc_id INTEGER NOT NULL REFERENCES document(url_id), to_doc_id INTEGER NOT NULL REFERENCES document(url_id), freq UNSIGNED INTEGER, PRIMARY KEY(from_doc_id, to_doc_id))')
         connection.cursor().execute('CREATE TABLE doc_word_index ( doc_id INTEGER REFERENCES document(url_id), word_id INTEGER REFERENCES lexicon(word_id), freq UNSIGNED INTEGER, PRIMARY KEY(doc_id, word_id))')
         connection.commit()
         
@@ -32,7 +32,7 @@ class DocLexBaseDB(object):
     table for clarity. Generalizing all the naming proved to be too confusing.
     """
 
-    #static methods
+    #class methods
     @classmethod
     def get_all_words(cls):
         cursor = connection.cursor()
@@ -99,6 +99,13 @@ class LinkWordIndexBaseDB(object):
     and comments are named and described corresponding to the link 
     table for clarity. Generalizing all the naming proved to be too confusing.
     """
+
+    @classmethod
+    def get_all_edges(cls):
+        cursor = connection.cursor()
+        cursor.execute('select * from %s'%cls.DBNAME)
+        return list(cursor)
+
     @classmethod
     def increment_and_get_freq(cls, from_doc_id, to_doc_id):
         """Returns the new frequency"""
@@ -133,3 +140,4 @@ class DocWordIndex(LinkWordIndexBaseDB):
     DBNAME = 'doc_word_index'
     FIELD1 = 'doc_id'
     FIELD2 = 'word_id'
+

@@ -5,7 +5,8 @@ from urlparse import urljoin
 import sqlite3 
 import cursorhelpers as db
 
-IGNOREWORDS = {'the':1,'of':1,'to':1,'and':1,'a':1,'in':1,'is':1,'it':1}
+#IGNOREWORDS = {'the':1,'of':1,'to':1,'and':1,'a':1,'in':1,'is':1,'it':1}
+IGNOREWORDS = {}
 
 class crawler(object): 
     def __init__(self):
@@ -102,4 +103,4 @@ if __name__=="__main__":
     #index
     import pagerank
     pagerank.connection = conn
-    print pagerank.populate_page_rank()
+    pagerank.populate_page_rank()
