@@ -95,7 +95,7 @@ class crawler(object):
             pages = newpages
 
 if __name__=="__main__":
-    #crawler().crawl()
+    crawler().crawl()
 
     print "CRAWLER FINISHED"
     print "BEGINNING PAGERANK ALGORITHM"

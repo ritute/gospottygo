@@ -7,7 +7,6 @@ connection = sqlite3.connect("../db/repo.db")
 """In general, Inserts return true or false. Searches return a value or None"""
 
 class DataBase(object):
-    
     @classmethod
     def drop_tables(cls):
         try:
@@ -22,12 +21,15 @@ class DataBase(object):
 
     @classmethod
     def create_tables(cls):
-        connection.cursor().execute('CREATE TABLE lexicon ( word_id INTEGER PRIMARY KEY ASC AUTOINCREMENT, word VARCHAR(100) UNIQUE NOT NULL)')
-        connection.cursor().execute('CREATE TABLE document (url_id INTEGER PRIMARY KEY ASC AUTOINCREMENT, url VARCHAR(255) UNIQUE NOT NULL)')
-        connection.cursor().execute('CREATE TABLE link ( from_doc_id INTEGER NOT NULL REFERENCES document(url_id), to_doc_id INTEGER NOT NULL REFERENCES document(url_id), freq UNSIGNED INTEGER, PRIMARY KEY(from_doc_id, to_doc_id))')
-        connection.cursor().execute('CREATE TABLE doc_word_index ( doc_id INTEGER REFERENCES document(url_id), word_id INTEGER REFERENCES lexicon(word_id), freq UNSIGNED INTEGER, PRIMARY KEY(doc_id, word_id))')
-        connection.cursor().execute('CREATE TABLE page_rank(doc_id INTEGER REFERENCES document(url_id), page_rank INTEGER, PRIMARY KEY(doc_id))')
-        connection.commit()
+        try:
+            connection.cursor().execute('CREATE TABLE lexicon ( word_id INTEGER PRIMARY KEY ASC AUTOINCREMENT, word VARCHAR(100) UNIQUE NOT NULL)')
+            connection.cursor().execute('CREATE TABLE document (url_id INTEGER PRIMARY KEY ASC AUTOINCREMENT, url VARCHAR(255) UNIQUE NOT NULL)')
+            connection.cursor().execute('CREATE TABLE link ( from_doc_id INTEGER NOT NULL REFERENCES document(url_id), to_doc_id INTEGER NOT NULL REFERENCES document(url_id), freq UNSIGNED INTEGER, PRIMARY KEY(from_doc_id, to_doc_id))')
+            connection.cursor().execute('CREATE TABLE doc_word_index ( doc_id INTEGER REFERENCES document(url_id), word_id INTEGER REFERENCES lexicon(word_id), freq UNSIGNED INTEGER, PRIMARY KEY(doc_id, word_id))')
+            connection.cursor().execute('CREATE TABLE page_rank(doc_id INTEGER REFERENCES document(url_id), page_rank INTEGER, PRIMARY KEY(doc_id))')
+            connection.commit()
+        except:
+            print "Error in trying to create tables!\n"
         
 
 class DocLexBaseDB(object):
@@ -96,6 +98,9 @@ class Document(DocLexBaseDB):
     IDNAME = 'url_id'
     VALNAME = 'url'
     MAXWORDLEN = 255 
+
+
+
 
 
 class LinkWordIndexBaseDB(object):

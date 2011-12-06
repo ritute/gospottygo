@@ -25,7 +25,7 @@
             <ul>
               <li>
                 <label for="keyword" class="infield">Search for keyword</label>
-                <input type="text" name="keyword" id="keyword" maxlength="" tabindex="1" value="{{ keyword }}"/>
+                <input type="text" name="keyword" id="keyword" maxlength="100" tabindex="1" value="{{ keyword }}"/>
               </li>
               <li>
                 <input type="submit" value="Fetch »" tabindex="2"/>
@@ -41,10 +41,10 @@
                 </tr>
             </thead>
             <tbody>
-              %for i in range(val):
+              %for result in results:
               <tr class="link">
                 <td class="titlelink">
-                  <a class="title" href="#"><b>JKL</b> Components Corporation</a>
+                  <a class="title" href="#">{{ result[3] }}</a>
                   <div class="url">www.jkllamps.com/</div>
                   <div class="description"><b>JKL</b> Components Corporation is a lighting solutions provider offering LED, fluorescent, incandescent and ultra-violet technologies. A wide assortment of ...</div>
                 </td>

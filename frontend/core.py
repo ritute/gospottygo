@@ -18,7 +18,7 @@ def index():
 @view('results')
 def results():
   keyword = request.GET.get('keyword')
-  print search_query(keyword)
-  return dict(keyword=keyword, val=6)
+  results = search_query(keyword)
+  return dict(keyword=keyword, results=results)
 
 run(host='localhost', port=8080)

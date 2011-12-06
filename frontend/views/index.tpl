@@ -24,7 +24,7 @@
             <ul>
               <li>
                 <label for="keyword" class="infield">Search for keyword</label>
-                <input type="text" name="keyword" id="keyword" maxlength="" tabindex="1"/>
+                <input type="text" name="keyword" id="keyword" maxlength="100" tabindex="1"/>
               </li>
               <li>
                 <input type="submit" value="Fetch »" tabindex="2"/>
