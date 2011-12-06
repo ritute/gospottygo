@@ -6,7 +6,7 @@ Backend Interface
 
 import cursorhelpers as db
 
-def searchQuery(word):
+def search_query(word):
     """Returns pages that contain the word corresponding to word_id by descending
     page_rank.
     Return:
@@ -24,4 +24,4 @@ def searchQuery(word):
     return results 
 
 if __name__=="__main__":
-    print searchQuery("alex") 
+    print search_query("alex") 
