@@ -1,21 +1,21 @@
-from bottle import *
+from bottle import static_file, route, get, view, run, request
 
-# @route('/')
-# def index():
-#   send_file('index.html', root="resources/public/")
+# Server static files on server
 @route('/static/:path#.+#', name='static')
 def static(path):
   return static_file(path, root='static')
 
-@route('/')
+# Index view
+@get('/')
 @view('index')
 def index():
-  return {'get_url': get_url}
+  return {}
 
-# @route('/<filename>')
-# def serve_html(filename):
-#   send_file(filename, root="resources/public/")
-
-
+# Results view
+@get('/results')
+@view('results')
+def results():
+  keyword = request.GET.get('keyword')
+  return dict(keyword=keyword, val=6)
 
 run(host='localhost', port=8080)

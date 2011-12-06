@@ -1,0 +1,83 @@
+@import "compass/css3"
+@import "partials/base"
+@import "partials/common"
+
+body
+  +body-font-style
+
+  ul, nav
+    :list-style-type none
+    :padding 0
+    :margin 0
+    :display block
+    li
+      :padding 0
+      :margin 0 10px 1em -2px
+      :display inline-block
+      :vertical-align top
+    
+  a
+    :text-decoration none
+  
+  #container
+    :width $main-width
+    :margin 0 auto
+  
+    header
+      +head-font-style
+      :border-top 1px solid #F90
+      :width 100%
+      :position absolute
+      :top 0
+      :left 0
+
+    #main
+      :padding 40px
+      :position relative
+      #logo
+        +logo-font-style
+        :font-size 36px
+        :position absolute
+        :top 50px
+        :left -160px
+      #search-box
+        :position relative
+        :margin 0
+        :padding 5px 0 0
+        :padding-top 20px
+      #search-results
+        :width 580px
+        #result-table_first, #result-table_last
+          :display none
+        #result-table_next:hover, #result-table_previous:hover
+          :text-decoration underline
+          :cursor pointer
+          // visited links???
+        #result-table_paginate
+          :text-align left
+          :padding-top 20px
+          span
+            :color #9100F3
+            :padding 5px 8px
+          span span:hover
+            :background #EDEDED
+            :cursor pointer
+        table
+          :width 100%
+          :margin 0
+          tbody
+            :border 1px solid rgba(0,0,0,.1)
+            tr > td
+              :padding-bottom 18px
+            tr
+              td
+                :background white
+                :color #333
+              td .title
+                :color #12C
+                :font-size 18px
+                :text-decoration underline
+                &:visited
+                  :color #61C
+              td .url
+                :color #093

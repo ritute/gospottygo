@@ -1,0 +1,3 @@
+$(function(){
+  $('label.infield').inFieldLabels();
+});
