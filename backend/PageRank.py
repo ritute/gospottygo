@@ -26,7 +26,7 @@ class Node(object):
 
     def add_outgoing_link(self,outnode):
         self.outgoing_links.append(outnode)
-        self.num_outgoing+=1
+        self.num_outgoing=len(self.outgoing_links)
     
 def load_graph():
     #tuples of (id,url)
@@ -35,6 +35,9 @@ def load_graph():
 
     #tuples of (from, to, frequency)
     raw_edges = db.Link.get_all_edges()
+
+    num_from = set([edge[0] for edge in raw_edges])
+    num_to = set([edge[1] for edge in raw_edges])
     for edge in raw_edges:
         node1 = nodes[edge[0]]
         node2 = nodes[edge[1]]
@@ -65,17 +68,20 @@ def get_seed_nodes_and_set_seeds(nodes):
     return node_seed_list
 
 def populate_page_rank():
-    return compute_page_rank()
+    nodes_dict = compute_page_rank()
+    nodes = nodes_dict.values()
+    for node in nodes:
+        db.PageRank.insert_page_rank(node.doc_id,node.score)
 
 def compute_page_rank():
     nodes = load_graph() 
     seed_nodes = get_seed_nodes_and_set_seeds(nodes)
-    print_nodes(seed_nodes)
+    #print_nodes(seed_nodes)
 
     for node in seed_nodes:
         recursively_propagate_rank(node)
 
-    print_nodes(nodes)
+    #print_nodes(nodes)
 
     return nodes
 

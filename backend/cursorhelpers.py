@@ -1,7 +1,7 @@
 import sqlite3
 
 #global cursors which all classes in this module use
-connection = None
+connection = sqlite3.connect("../db/repo.db")
 
 
 """In general, Inserts return true or false. Searches return a value or None"""
@@ -10,11 +10,15 @@ class DataBase(object):
     
     @classmethod
     def drop_tables(cls):
-        connection.cursor().execute("DROP TABLE lexicon")
-        connection.cursor().execute("DROP TABLE document")
-        connection.cursor().execute("DROP TABLE link")
-        connection.cursor().execute("DROP TABLE doc_word_index")
-        connection.commit()
+        try:
+            connection.cursor().execute("DROP TABLE lexicon")
+            connection.cursor().execute("DROP TABLE document")
+            connection.cursor().execute("DROP TABLE link")
+            connection.cursor().execute("DROP TABLE doc_word_index")
+            connection.cursor().execute("DROP TABLE page_rank")
+            connection.commit()
+        except:
+            pass
 
     @classmethod
     def create_tables(cls):
@@ -22,6 +26,7 @@ class DataBase(object):
         connection.cursor().execute('CREATE TABLE document (url_id INTEGER PRIMARY KEY ASC AUTOINCREMENT, url VARCHAR(255) UNIQUE NOT NULL)')
         connection.cursor().execute('CREATE TABLE link ( from_doc_id INTEGER NOT NULL REFERENCES document(url_id), to_doc_id INTEGER NOT NULL REFERENCES document(url_id), freq UNSIGNED INTEGER, PRIMARY KEY(from_doc_id, to_doc_id))')
         connection.cursor().execute('CREATE TABLE doc_word_index ( doc_id INTEGER REFERENCES document(url_id), word_id INTEGER REFERENCES lexicon(word_id), freq UNSIGNED INTEGER, PRIMARY KEY(doc_id, word_id))')
+        connection.cursor().execute('CREATE TABLE page_rank(doc_id INTEGER REFERENCES document(url_id), page_rank INTEGER, PRIMARY KEY(doc_id))')
         connection.commit()
         
 
@@ -141,3 +146,23 @@ class DocWordIndex(LinkWordIndexBaseDB):
     FIELD1 = 'doc_id'
     FIELD2 = 'word_id'
 
+class PageRank(object):
+    
+    @classmethod
+    def insert_page_rank(cls,doc_id,page_rank):
+        cursor = connection.cursor()
+        cursor.execute('insert into page_rank values (?,?)',(doc_id,page_rank))
+        connection.commit()
+
+class Join(object):
+    """A class that performs queries on joins of tables """
+    @classmethod
+    def get_page_rank_urls_by_word(cls,word_id):
+        """Returns pages that contain the word corresponding to word_id by descending
+        page_rank.
+        Return:
+        ((doc_id, page_rank, frequency of word, url),...)"""
+        cursor = connection.cursor()
+        cursor.execute('select document.url_id, page_rank.page_rank, doc_word_index.freq, document.url from document,page_rank,doc_word_index where document.url_id=page_rank.doc_id and page_rank.doc_id=doc_word_index.doc_id and doc_word_index.word_id=? order by page_rank desc',(word_id,))
+
+        return list(cursor)

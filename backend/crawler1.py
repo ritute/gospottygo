@@ -86,7 +86,7 @@ class crawler(object):
                             url = urljoin(page, link['href'])
                         if url.find("'") != -1: continue
                         url = url.split('#')[0]  # remove location portion
-                        if url[0:4] == 'http' and url in self.is_indexed:
+                        if url[0:4] == 'http' and url not in self.is_indexed:
                             newpages[url] = 1
                         linktext = self._get_text_only(link)
                         self._add_link(page, url, linktext)
@@ -95,10 +95,10 @@ class crawler(object):
             pages = newpages
 
 if __name__=="__main__":
-    conn = sqlite3.connect('../db/repo.db')
-    db.connection = conn #set the connection variable in cursorshelper
-   
     #crawler().crawl()
+
+    print "CRAWLER FINISHED"
+    print "BEGINNING PAGERANK ALGORITHM"
 
     #index
     import pagerank
