@@ -1,1 +1,7 @@
-http://www.crummy.com/software/BeautifulSoup/documentation.html
+http://google.ca|900000
+http://www.wikipedia.org/|500000
+http://ca.yahoo.com/|5000000
+http://www.bing.com/|700000
+https://news.ycombinator.com/|300000
+http://www.utoronto.ca/|50000
+http://www.theglobeandmail.com/|250000

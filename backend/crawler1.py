@@ -115,13 +115,14 @@ class crawler(object):
 
 if __name__=="__main__":
     print "STARTING CRAWLER..."
+    
     crawler().crawl()
 
     print "CRAWLER FINISHED"
     
-    # print "BEGINNING PAGERANK ALGORITHM"
-    # 
-    # #index
-    # import pagerank
-    # pagerank.connection = db.connection
-    # pagerank.populate_page_rank()
+    print "BEGINNING PAGERANK ALGORITHM"
+    
+    #index
+    import pagerank
+    pagerank.connection = db.connection
+    pagerank.populate_page_rank()

@@ -177,6 +177,9 @@ class Join(object):
         Return:
         ((doc_id, page_rank, frequency of word, url),...)"""
         cursor = connection.cursor()
-        cursor.execute('select document.url_id, page_rank.page_rank, doc_word_index.freq, document.url from document,page_rank,doc_word_index where document.url_id=page_rank.doc_id and page_rank.doc_id=doc_word_index.doc_id and doc_word_index.word_id=? order by page_rank desc',(word_id,))
+        cursor.execute('''select document.url_id, page_rank.page_rank, doc_word_index.freq, document.url 
+                          from document,page_rank,doc_word_index 
+                          where document.url_id=page_rank.doc_id and page_rank.doc_id=doc_word_index.doc_id and doc_word_index.word_id=? 
+                          order by page_rank desc''',(word_id,))
 
         return list(cursor)

@@ -50,6 +50,7 @@
                 </td>
               </tr>
               %end
+              <img src="http://do.convertapi.com/web2image?curl=http://www.utoronto.ca&PageWidth=100">
             </tbody>
           </table>
         </div> <!--/search-results-->
