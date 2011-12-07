@@ -17,16 +17,16 @@
       </div>
       <div id="main" role="main">
         <div id="logo">
-          <p>go spotty go</p>
+          <h1>go spotty go</h1>
         </div>
         <div id="search-box">
           <form method="GET" action="/results">
             <ul>
               <li>
-                <label for="keyword" class="infield">Search for keyword</label>
+                <label for="keyword" class="infield">What are you looking for?</label>
                 <input type="text" name="keyword" id="keyword" maxlength="100" tabindex="1"/>
               </li>
-              <li>
+              <li class="action">
                 <input type="submit" value="Fetch »" tabindex="2"/>
               </li>
             </ul>

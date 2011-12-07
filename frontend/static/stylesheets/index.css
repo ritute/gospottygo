@@ -1,4 +1,4 @@
-/* line 4, /Users/ritute/Documents/CSC326/Project/resources/public/sass/partials/_common.sass */
+/* line 4, ../sass/partials/_common.sass */
 label.infield {
   position: absolute;
   top: 0;
@@ -18,7 +18,7 @@ label.infield {
   cursor: pointer;
 }
 
-/* line 15, /Users/ritute/Documents/CSC326/Project/resources/public/sass/partials/_common.sass */
+/* line 15, ../sass/partials/_common.sass */
 #about {
   background: url(../images/info-blur.png) center center no-repeat;
   width: 24px;
@@ -27,18 +27,18 @@ label.infield {
   top: 10px;
   right: 10px;
 }
-/* line 22, /Users/ritute/Documents/CSC326/Project/resources/public/sass/partials/_common.sass */
+/* line 22, ../sass/partials/_common.sass */
 #about:hover, #about:focus, #about:active {
   background-image: url(../images/info-focus.png);
 }
-/* line 24, /Users/ritute/Documents/CSC326/Project/resources/public/sass/partials/_common.sass */
+/* line 24, ../sass/partials/_common.sass */
 #about a {
   display: block;
   width: 24px;
   height: 24px;
 }
 
-/* line 30, /Users/ritute/Documents/CSC326/Project/resources/public/sass/partials/_common.sass */
+/* line 30, ../sass/partials/_common.sass */
 input[type=text] {
   cursor: pointer;
   width: 360px;
@@ -69,7 +69,7 @@ input[type=text] {
   font-size: 22px;
   font-weight: 500px;
 }
-/* line 44, /Users/ritute/Documents/CSC326/Project/resources/public/sass/partials/_common.sass */
+/* line 44, ../sass/partials/_common.sass */
 input[type=text]:hover {
   background: rgba(255, 255, 255, 0.8);
   -moz-box-shadow: inset 0 0 0 1px #ffcc80, 0 1px 0 white, inset 0 1px 4px rgba(0, 0, 0, 0.3);
@@ -77,7 +77,7 @@ input[type=text]:hover {
   -o-box-shadow: inset 0 0 0 1px #ffcc80, 0 1px 0 white, inset 0 1px 4px rgba(0, 0, 0, 0.3);
   box-shadow: inset 0 0 0 1px #ffcc80, 0 1px 0 white, inset 0 1px 4px rgba(0, 0, 0, 0.3);
 }
-/* line 47, /Users/ritute/Documents/CSC326/Project/resources/public/sass/partials/_common.sass */
+/* line 47, ../sass/partials/_common.sass */
 input[type=text]:focus {
   border-color: #ff9900 #ffb23f #ffb23f;
   background: rgba(255, 255, 255, 0.9);
@@ -89,7 +89,7 @@ input[type=text]:focus {
   outline: none;
 }
 
-/* line 54, /Users/ritute/Documents/CSC326/Project/resources/public/sass/partials/_common.sass */
+/* line 54, ../sass/partials/_common.sass */
 input[type=submit] {
   cursor: pointer;
   padding: 0.45em 0.8em 0.6em;
@@ -126,7 +126,7 @@ input[type=submit] {
   -o-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 1px 0 0 rgba(255, 255, 255, 0.1) inset, -1px 0 0 rgba(255, 255, 255, 0.1) inset, 0 0.95em 0 1px rgba(255, 255, 255, 0.137) inset, 0 -1px 0 rgba(255, 255, 255, 0.1) inset, 0 -0.25em 0.75em #c27400 inset, 0 1px 3px rgba(128, 77, 0, 0.75), 0 1px 0 white;
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 1px 0 0 rgba(255, 255, 255, 0.1) inset, -1px 0 0 rgba(255, 255, 255, 0.1) inset, 0 0.95em 0 1px rgba(255, 255, 255, 0.137) inset, 0 -1px 0 rgba(255, 255, 255, 0.1) inset, 0 -0.25em 0.75em #c27400 inset, 0 1px 3px rgba(128, 77, 0, 0.75), 0 1px 0 white;
 }
-/* line 81, /Users/ritute/Documents/CSC326/Project/resources/public/sass/partials/_common.sass */
+/* line 81, ../sass/partials/_common.sass */
 input[type=submit]:hover {
   outline: none;
   text-decoration: none;
@@ -147,7 +147,7 @@ input[type=submit]:hover {
   -o-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 1px 0 0 rgba(255, 255, 255, 0.1) inset, -1px 0 0 rgba(255, 255, 255, 0.1) inset, 0 0.95em 0 1px rgba(255, 255, 255, 0.2) inset, 0 -1px 0 rgba(255, 255, 255, 0.1) inset, 0 -0.25em 0.75em #ffa31a inset, 0 1px 3px rgba(204, 122, 0, 0.75), 0 2px 5px rgba(102, 61, 0, 0.75), 0 1px 0 white;
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 1px 0 0 rgba(255, 255, 255, 0.1) inset, -1px 0 0 rgba(255, 255, 255, 0.1) inset, 0 0.95em 0 1px rgba(255, 255, 255, 0.2) inset, 0 -1px 0 rgba(255, 255, 255, 0.1) inset, 0 -0.25em 0.75em #ffa31a inset, 0 1px 3px rgba(204, 122, 0, 0.75), 0 2px 5px rgba(102, 61, 0, 0.75), 0 1px 0 white;
 }
-/* line 97, /Users/ritute/Documents/CSC326/Project/resources/public/sass/partials/_common.sass */
+/* line 97, ../sass/partials/_common.sass */
 input[type=submit]:active {
   text-decoration: none;
   border-color: #1a0f00 #4d2e00 #4d2e00;
@@ -179,31 +179,35 @@ body {
   text-decoration: none;
   letter-spacing: 0em;
   word-spacing: 0em;
+  background: url(../images/back.jpg) center 140px no-repeat;
 }
-/* line 8, ../sass/index.sass */
+/* line 10, ../sass/index.sass */
 body ul, body nav {
   list-style-type: none;
   padding: 0;
   margin: 0;
   display: block;
 }
-/* line 13, ../sass/index.sass */
+/* line 15, ../sass/index.sass */
 body ul li, body nav li {
   padding: 0;
-  margin: 0 10px 1em -2px;
+  margin: 0 0 1em -2px;
   display: inline-block;
   vertical-align: top;
 }
-/* line 19, ../sass/index.sass */
+/* line 21, ../sass/index.sass */
+body ul li.action, body nav li.action {
+  margin-left: -10px;
+}
+/* line 24, ../sass/index.sass */
 body a {
   text-decoration: none;
 }
-/* line 23, ../sass/index.sass */
+/* line 28, ../sass/index.sass */
 body #container {
-  width: 960px;
   margin: 0 auto;
 }
-/* line 27, ../sass/index.sass */
+/* line 32, ../sass/index.sass */
 body #container header {
   font-family: Helvetica, Arial, sans-serif !important;
   font-style: normal;
@@ -219,11 +223,23 @@ body #container header {
   top: 0;
   left: 0;
 }
-/* line 35, ../sass/index.sass */
+/* line 40, ../sass/index.sass */
 body #container #main {
   padding: 40px;
+  width: 500px;
+  background: white;
+  margin: 0 auto;
+  margin-top: 100px;
+  padding-bottom: 20px;
+  border: 1px solid black;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -o-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -khtml-border-radius: 2px;
+  border-radius: 2px;
 }
-/* line 37, ../sass/index.sass */
+/* line 51, ../sass/index.sass */
 body #container #main #logo {
   font-family: "Annie Use Your Telescope", cursive;
   font-style: normal;
@@ -236,9 +252,18 @@ body #container #main #logo {
   margin: 0 auto;
   width: 440px;
   padding: 100px 0 10px 0;
+  padding-top: 0;
   text-align: center;
 }
-/* line 43, ../sass/index.sass */
+/* line 59, ../sass/index.sass */
+body #container #main #logo h1 {
+  background: url(../images/logo.png);
+  width: 352px;
+  height: 88px;
+  text-indent: -99999px;
+  margin: 0 auto;
+}
+/* line 65, ../sass/index.sass */
 body #container #main #search-box {
   position: relative;
   margin: 0 auto;

@@ -265,76 +265,77 @@ body #container #main #search-results #search-time {
 }
 /* line 60, ../sass/results.sass */
 body #container #main #search-results #site-preview {
-  position: fixed;
-  top: 190px;
-  right: 0;
+  position: absolute;
+  top: 180px;
+  left: 700px;
+  bottom: 0;
   background-color: #fafafa;
   border-left: 1px solid #ebebeb;
   padding: 22px 16px 10px 31px;
   height: 100%;
   width: 740px;
 }
-/* line 69, ../sass/results.sass */
+/* line 70, ../sass/results.sass */
 body #container #main #search-results #site-preview img {
   width: 100px;
 }
-/* line 71, ../sass/results.sass */
+/* line 72, ../sass/results.sass */
 body #container #main #search-results #result-table_first, body #container #main #search-results #result-table_last {
   display: none;
 }
-/* line 73, ../sass/results.sass */
+/* line 74, ../sass/results.sass */
 body #container #main #search-results #result-table_next:hover, body #container #main #search-results #result-table_previous:hover {
   text-decoration: underline;
   cursor: pointer;
 }
-/* line 76, ../sass/results.sass */
+/* line 77, ../sass/results.sass */
 body #container #main #search-results #result-table_paginate {
   text-align: left;
   padding-top: 20px;
 }
-/* line 79, ../sass/results.sass */
+/* line 80, ../sass/results.sass */
 body #container #main #search-results #result-table_paginate span {
   color: #9100f3;
   padding: 5px 8px;
 }
-/* line 82, ../sass/results.sass */
+/* line 83, ../sass/results.sass */
 body #container #main #search-results #result-table_paginate span span:hover {
   background: #ededed;
   cursor: pointer;
 }
-/* line 85, ../sass/results.sass */
+/* line 86, ../sass/results.sass */
 body #container #main #search-results #result-table_wrapper {
   width: 512px;
 }
-/* line 87, ../sass/results.sass */
+/* line 88, ../sass/results.sass */
 body #container #main #search-results table {
   margin: 0;
   padding-top: 40px;
 }
-/* line 90, ../sass/results.sass */
+/* line 91, ../sass/results.sass */
 body #container #main #search-results table tbody {
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
-/* line 92, ../sass/results.sass */
+/* line 93, ../sass/results.sass */
 body #container #main #search-results table tbody tr > td {
   padding-bottom: 18px;
 }
-/* line 95, ../sass/results.sass */
+/* line 96, ../sass/results.sass */
 body #container #main #search-results table tbody tr td {
   background: white;
   color: #333333;
 }
-/* line 98, ../sass/results.sass */
+/* line 99, ../sass/results.sass */
 body #container #main #search-results table tbody tr td .title {
   color: #1122cc;
   font-size: 18px;
   text-decoration: underline;
 }
-/* line 102, ../sass/results.sass */
+/* line 103, ../sass/results.sass */
 body #container #main #search-results table tbody tr td .title:visited {
   color: #6611cc;
 }
-/* line 104, ../sass/results.sass */
+/* line 105, ../sass/results.sass */
 body #container #main #search-results table tbody tr td .url {
   color: #009933;
 }
