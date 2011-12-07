@@ -68,12 +68,14 @@ body
           :position absolute
           :top 182px
           :left 580px
+          :min-width 240px
           :bottom 0
           :background-color #FAFAFA
           :border-left 1px solid #EBEBEB
-          :padding 22px 16px 10px 31px
+          :border-right 1px solid #EBEBEB
+          :padding 22px 31px 10px 31px
           :height 100%
-          :width 100%
+          //:width 100%
           :padding-top 32px
           a.title
             :color #12C
@@ -84,9 +86,16 @@ body
           div.url
             :color #093
           img
-            :width 570px
+            :width 500px
             :cursor pointer
             :padding-top 10px
+          div.loader
+            :width 32px
+            :height 32px
+            :position absolute
+            :top 140px
+            :left 50%
+            :background url(../images/ajax-loader.gif) 0 0 no-repeat
         #result-table_first, #result-table_last
           :display none
         #result-table_next:hover, #result-table_previous:hover

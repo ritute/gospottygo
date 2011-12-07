@@ -23,13 +23,13 @@ function configTable() {
     
     // Bottom pagination fixups
     $('#result-table_previous').text('Prev');
-    $('#result-table_paginate').find('span.paginate_button_disabled').hide();
-    $('#result-table_paginate span').click(function(){
-      if ($(this).hasClass('paginate_button_disabled'))
-        $(this).hide();
-      else
-        $(this).show();
-    });
+    // $('#result-table_paginate').find('span.paginate_button_disabled').hide();
+    // $('#result-table_paginate span').click(function(){
+    //   if ($(this).hasClass('paginate_button_disabled'))
+    //     $(this).hide();
+    //   else
+    //     $(this).show();
+    // });
     
     $('tr').hover(function(){
         $(this).find('td.preview-arrow').show();
@@ -46,13 +46,13 @@ function configTable() {
             data: {
                 'CUrl': href,
                 'OutputFormat': 'png',
-                'PageWidth': 600,
-                'Scripts': false
+                'PageWidth': 600
             },
             jsonp: "callback",
             success: function(data) {
                 if (data.Result) {
                     $('#site-preview img').attr('src', 'data:image/png;base64,'+data.File);
+                    $('div.loader').hide();
                 } else {
                     console.log("Error in retrieving preview image!");
                 }

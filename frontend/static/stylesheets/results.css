@@ -262,95 +262,105 @@ body #container #main #search-results #site-preview {
   position: absolute;
   top: 182px;
   left: 580px;
+  min-width: 240px;
   bottom: 0;
   background-color: #fafafa;
   border-left: 1px solid #ebebeb;
-  padding: 22px 16px 10px 31px;
+  border-right: 1px solid #ebebeb;
+  padding: 22px 31px 10px 31px;
   height: 100%;
-  width: 100%;
   padding-top: 32px;
 }
-/* line 78, ../sass/results.sass */
+/* line 80, ../sass/results.sass */
 body #container #main #search-results #site-preview a.title {
   color: #1122cc;
   font-size: 18px;
   text-decoration: underline;
 }
-/* line 82, ../sass/results.sass */
+/* line 84, ../sass/results.sass */
 body #container #main #search-results #site-preview a.title:visited {
   color: #6611cc;
 }
-/* line 84, ../sass/results.sass */
+/* line 86, ../sass/results.sass */
 body #container #main #search-results #site-preview div.url {
   color: #009933;
 }
-/* line 86, ../sass/results.sass */
+/* line 88, ../sass/results.sass */
 body #container #main #search-results #site-preview img {
-  width: 570px;
+  width: 500px;
   cursor: pointer;
   padding-top: 10px;
 }
-/* line 90, ../sass/results.sass */
+/* line 92, ../sass/results.sass */
+body #container #main #search-results #site-preview div.loader {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 140px;
+  left: 50%;
+  background: url(../images/ajax-loader.gif) 0 0 no-repeat;
+}
+/* line 99, ../sass/results.sass */
 body #container #main #search-results #result-table_first, body #container #main #search-results #result-table_last {
   display: none;
 }
-/* line 92, ../sass/results.sass */
+/* line 101, ../sass/results.sass */
 body #container #main #search-results #result-table_next:hover, body #container #main #search-results #result-table_previous:hover {
   text-decoration: underline;
   cursor: pointer;
 }
-/* line 95, ../sass/results.sass */
+/* line 104, ../sass/results.sass */
 body #container #main #search-results #result-table_paginate {
   text-align: left;
   padding-top: 20px;
 }
-/* line 98, ../sass/results.sass */
+/* line 107, ../sass/results.sass */
 body #container #main #search-results #result-table_paginate span {
   color: #333333;
   padding: 5px 8px;
 }
-/* line 101, ../sass/results.sass */
+/* line 110, ../sass/results.sass */
 body #container #main #search-results #result-table_paginate span span:hover {
   background: #ededed;
   cursor: pointer;
 }
-/* line 104, ../sass/results.sass */
+/* line 113, ../sass/results.sass */
 body #container #main #search-results #result-table_wrapper {
   width: 530px;
 }
-/* line 106, ../sass/results.sass */
+/* line 115, ../sass/results.sass */
 body #container #main #search-results table {
   margin: 0;
   padding-top: 40px;
 }
-/* line 109, ../sass/results.sass */
+/* line 118, ../sass/results.sass */
 body #container #main #search-results table tbody {
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
-/* line 111, ../sass/results.sass */
+/* line 120, ../sass/results.sass */
 body #container #main #search-results table tbody tr > td {
   padding-bottom: 18px;
 }
-/* line 114, ../sass/results.sass */
+/* line 123, ../sass/results.sass */
 body #container #main #search-results table tbody tr td {
   background: white;
   color: #333333;
 }
-/* line 117, ../sass/results.sass */
+/* line 126, ../sass/results.sass */
 body #container #main #search-results table tbody tr td .title {
   color: #1122cc;
   font-size: 18px;
   text-decoration: underline;
 }
-/* line 121, ../sass/results.sass */
+/* line 130, ../sass/results.sass */
 body #container #main #search-results table tbody tr td .title:visited {
   color: #6611cc;
 }
-/* line 123, ../sass/results.sass */
+/* line 132, ../sass/results.sass */
 body #container #main #search-results table tbody tr td .url {
   color: #009933;
 }
-/* line 125, ../sass/results.sass */
+/* line 134, ../sass/results.sass */
 body #container #main #search-results table tbody tr td.preview-arrow {
   display: none;
   background: #eeeeee;
@@ -365,7 +375,7 @@ body #container #main #search-results table tbody tr td.preview-arrow {
   border: 1px solid #dcdcdc;
   position: relative;
 }
-/* line 133, ../sass/results.sass */
+/* line 142, ../sass/results.sass */
 body #container #main #search-results table tbody tr td.preview-arrow div.arrow {
   background: url(../images/arrow.png) 0 0 no-repeat;
   height: 20px;
