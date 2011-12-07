@@ -21,7 +21,7 @@ def search_query(word):
     
     results = db.Join.get_page_rank_urls_by_word(word_id)
 
-    return results 
+    return results
 
 if __name__=="__main__":
     print search_query("alex") 

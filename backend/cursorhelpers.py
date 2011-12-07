@@ -175,9 +175,9 @@ class Join(object):
         """Returns pages that contain the word corresponding to word_id by descending
         page_rank.
         Return:
-        ((doc_id, page_rank, frequency of word, url),...)"""
+        ((doc_id, page_rank, frequency of word, url, title, descrip),...)"""
         cursor = connection.cursor()
-        cursor.execute('''select document.url_id, page_rank.page_rank, doc_word_index.freq, document.url 
+        cursor.execute('''select document.url_id, page_rank.page_rank, doc_word_index.freq, document.url, document.title, document.descrip 
                           from document,page_rank,doc_word_index 
                           where document.url_id=page_rank.doc_id and page_rank.doc_id=doc_word_index.doc_id and doc_word_index.word_id=? 
                           order by page_rank desc''',(word_id,))

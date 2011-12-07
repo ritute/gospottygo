@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
-    <title>go spotty go / results</title>
+    <title>{{ keyword }} - go spotty go</title>
 
     <link href='http://fonts.googleapis.com/css?family=Crafty+Girls|Give+You+Glory|The+Girl+Next+Door|Swanky+and+Moo+Moo|Gochi+Hand|Gloria+Hallelujah|Devonshire|Architects+Daughter|Over+the+Rainbow|Nothing+You+Could+Do|Indie+Flower|Annie+Use+Your+Telescope' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="/static/stylesheets/results.css">
@@ -34,6 +34,9 @@
           </form>
         </div> <!--/search-box-->
         <div id="search-results">
+          <div id="search-time">
+            Fetched {{ len(results) }} results ({{ time }} seconds)
+          </div>
           <table id="result-table">
             <thead>
                 <tr>
@@ -44,9 +47,9 @@
               %for result in results:
               <tr class="link">
                 <td class="titlelink">
-                  <a class="title" href="#">{{ result[3] }}</a>
-                  <div class="url">www.jkllamps.com/</div>
-                  <div class="description"><b>JKL</b> Components Corporation is a lighting solutions provider offering LED, fluorescent, incandescent and ultra-violet technologies. A wide assortment of ...</div>
+                  <a class="title" href="#">{{ result[4] }}</a>
+                  <div class="url">{{ result[3] }}</div>
+                  <div class="description">{{ result[5] }}</div>
                 </td>
               </tr>
               %end
