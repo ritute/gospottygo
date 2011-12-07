@@ -5,7 +5,6 @@
 
     <title>{{ keyword }} - go spotty go</title>
 
-    <link href='http://fonts.googleapis.com/css?family=Crafty+Girls|Give+You+Glory|The+Girl+Next+Door|Swanky+and+Moo+Moo|Gochi+Hand|Gloria+Hallelujah|Devonshire|Architects+Daughter|Over+the+Rainbow|Nothing+You+Could+Do|Indie+Flower|Annie+Use+Your+Telescope' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="/static/stylesheets/results.css">
   </head>
 
@@ -28,7 +27,7 @@
                 <input type="text" name="keyword" id="keyword" maxlength="100" tabindex="1" value="{{ keyword }}"/>
               </li>
               <li>
-                <input type="submit" class="red-button" value="Fetch »" tabindex="2"/>
+                <input type="submit" class="red-button" value="Fetch" tabindex="2"/>
               </li>
             </ul>
           </form>
@@ -47,6 +46,7 @@
             <thead>
                 <tr>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -57,14 +57,16 @@
                   <div class="url">{{ result[3] }}</div>
                   <div class="description">{{ result[5] }}</div>
                 </td>
+                <td class="preview-arrow"><div class="arrow"></div></td>
               </tr>
               %end
             </tbody>
           </table>
           <div id="site-preview">
-            <a class="title" href="#">{{ result[4] }}</a>
-            <div class="url">{{ result[3] }}</div>
-            <!--<img src="http://do.convertapi.com/web2image?curl={{result[3]}}">-->
+            <a class="title" href=""></a>
+            <div class="url"></div>
+            <div class="loader"></div>
+            <img src="">
           </div> <!--/site-preview-->
         </div> <!--/search-results-->
       </div> <!--/main-->
