@@ -43,9 +43,29 @@ class crawler(object):
             return
         self.is_indexed[page] = True
 
-        # Add page to document table
+        # add page to document table
         document_id = db.Document.get_word_id_add(page)
 
+        # get the document title
+        title = soup('title')[0].string
+
+        # get a description of the document (using either meta tag or paragraph)
+        metas = soup('meta')
+        paras = soup('p')
+        if len(metas):
+            # use meta description tag if it's there
+            for meta in metas:
+                if ('name' in dict(meta.attrs)):
+                    descrip = meta['content']
+        elif len(paras):
+            # find first paragraph
+            descrip = paras[0].findAll(text=True)[0]
+        else:
+            descrip = "" # blank description
+        
+        # add title and description to document table
+        db.Document.add_title_and_description(document_id, title, descrip)
+        
         text = self._get_text_only(soup)
         words = self._separate_words(text)
 
@@ -76,7 +96,6 @@ class crawler(object):
                     print "Could not open %s" % page
                     continue
                 try:
-                    #import pdb; pdb.set_trace()
                     soup = BeautifulSoup(c.read())
                     self._index_page(page, soup)
 
@@ -95,12 +114,14 @@ class crawler(object):
             pages = newpages
 
 if __name__=="__main__":
+    print "STARTING CRAWLER..."
     crawler().crawl()
 
     print "CRAWLER FINISHED"
-    print "BEGINNING PAGERANK ALGORITHM"
-
-    #index
-    import pagerank
-    pagerank.connection = db.connection
-    pagerank.populate_page_rank()
+    
+    # print "BEGINNING PAGERANK ALGORITHM"
+    # 
+    # #index
+    # import pagerank
+    # pagerank.connection = db.connection
+    # pagerank.populate_page_rank()

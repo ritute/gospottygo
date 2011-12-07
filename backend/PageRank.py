@@ -8,12 +8,6 @@ Uses the Links database table to generate rankings of pages.
 '''
 
 class Node(object):
-    #self.doc_id
-    #self.url
-    #self.outgoing_links (list)
-    #self.num_outgoing
-    #self.score
-
     def __init__(self,doc_id,url,outgoing_links=None, score =0):
         self.doc_id = doc_id
         self.url = url

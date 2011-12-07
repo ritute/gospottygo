@@ -23,7 +23,7 @@ class DataBase(object):
     def create_tables(cls):
         try:
             connection.cursor().execute('CREATE TABLE lexicon ( word_id INTEGER PRIMARY KEY ASC AUTOINCREMENT, word VARCHAR(100) UNIQUE NOT NULL)')
-            connection.cursor().execute('CREATE TABLE document (url_id INTEGER PRIMARY KEY ASC AUTOINCREMENT, url VARCHAR(255) UNIQUE NOT NULL)')
+            connection.cursor().execute('CREATE TABLE document (url_id INTEGER PRIMARY KEY ASC AUTOINCREMENT, url VARCHAR(255) UNIQUE NOT NULL, title VARCHAR(255), descrip TEXT)')
             connection.cursor().execute('CREATE TABLE link ( from_doc_id INTEGER NOT NULL REFERENCES document(url_id), to_doc_id INTEGER NOT NULL REFERENCES document(url_id), freq UNSIGNED INTEGER, PRIMARY KEY(from_doc_id, to_doc_id))')
             connection.cursor().execute('CREATE TABLE doc_word_index ( doc_id INTEGER REFERENCES document(url_id), word_id INTEGER REFERENCES lexicon(word_id), freq UNSIGNED INTEGER, PRIMARY KEY(doc_id, word_id))')
             connection.cursor().execute('CREATE TABLE page_rank(doc_id INTEGER REFERENCES document(url_id), page_rank INTEGER, PRIMARY KEY(doc_id))')
@@ -71,7 +71,7 @@ class DocLexBaseDB(object):
         cursor.execute('select %s from %s where %s=?'%(cls.IDNAME,cls.DBNAME,cls.VALNAME),(word,))
         cursor_list = list(cursor) 
 
-        #if no rows are rturned, return None
+        #if no rows are returned, return None
         if len(cursor_list) == 0:
             return None
         else:
@@ -98,10 +98,19 @@ class Document(DocLexBaseDB):
     IDNAME = 'url_id'
     VALNAME = 'url'
     MAXWORDLEN = 255 
+    
+    @classmethod
+    def add_title_and_description(cls, doc_id, title, descrip):
+        try:
+            connection.cursor().execute("UPDATE %s SET title=?, descrip=? WHERE url_id=?"%(cls.DBNAME),(title, descrip, doc_id))
+            connection.commit()
+        except:
+            print "Error in adding title and description!\n"
+
+        
 
 
-
-
+# page rank stuff
 
 class LinkWordIndexBaseDB(object):
     """The doc_word_index and link databases are very similar
