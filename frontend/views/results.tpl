@@ -24,11 +24,11 @@
           <form method="GET" action="#">
             <ul>
               <li>
-                <label for="keyword" class="infield">Search for keyword</label>
+                <label for="keyword" class="infield">What are you looking for?</label>
                 <input type="text" name="keyword" id="keyword" maxlength="100" tabindex="1" value="{{ keyword }}"/>
               </li>
               <li>
-                <input type="submit" value="Fetch »" tabindex="2"/>
+                <input type="submit" class="red-button" value="Fetch »" tabindex="2"/>
               </li>
             </ul>
           </form>

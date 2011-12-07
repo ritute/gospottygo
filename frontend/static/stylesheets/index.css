@@ -149,12 +149,13 @@ input[type=text] {
   word-spacing: 0em;
   font-size: 22px;
   font-weight: 500px;
+  color: #dd4b39;
 }
-/* line 98, ../sass/partials/_common.sass */
+/* line 99, ../sass/partials/_common.sass */
 input[type=text]:hover {
   border-color: #aaaaaa;
 }
-/* line 100, ../sass/partials/_common.sass */
+/* line 101, ../sass/partials/_common.sass */
 input[type=text]:focus {
   border-color: #dd4b39;
   outline: none;

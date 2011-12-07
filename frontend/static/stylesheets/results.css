@@ -149,12 +149,13 @@ input[type=text] {
   word-spacing: 0em;
   font-size: 22px;
   font-weight: 500px;
+  color: #dd4b39;
 }
-/* line 98, ../sass/partials/_common.sass */
+/* line 99, ../sass/partials/_common.sass */
 input[type=text]:hover {
   border-color: #aaaaaa;
 }
-/* line 100, ../sass/partials/_common.sass */
+/* line 101, ../sass/partials/_common.sass */
 input[type=text]:focus {
   border-color: #dd4b39;
   outline: none;
@@ -225,36 +226,31 @@ body #container #main {
 }
 /* line 44, ../sass/results.sass */
 body #container #main #logo {
-  font-family: "Annie Use Your Telescope", cursive;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 50px;
-  text-transform: none;
-  text-decoration: none;
-  letter-spacing: 0em;
-  word-spacing: 0em;
-  font-size: 36px;
   position: absolute;
-  top: 50px;
-  left: -160px;
+  top: 56px;
+  left: -170px;
+  text-indent: -9999px;
+  background: url(../images/logo-small.png) center center no-repeat;
+  width: 200px;
+  height: 50px;
 }
-/* line 50, ../sass/results.sass */
+/* line 52, ../sass/results.sass */
 body #container #main #search-box {
   position: relative;
   margin: 0;
   padding: 5px 0 0;
   padding-top: 20px;
 }
-/* line 55, ../sass/results.sass */
+/* line 57, ../sass/results.sass */
 body #container #main #search-results {
   padding-top: 40px;
 }
-/* line 57, ../sass/results.sass */
+/* line 59, ../sass/results.sass */
 body #container #main #search-results #search-time {
   color: #999999;
   font-size: 13px;
 }
-/* line 60, ../sass/results.sass */
+/* line 62, ../sass/results.sass */
 body #container #main #search-results #site-preview {
   position: absolute;
   top: 180px;
@@ -266,67 +262,67 @@ body #container #main #search-results #site-preview {
   height: 100%;
   width: 740px;
 }
-/* line 70, ../sass/results.sass */
+/* line 72, ../sass/results.sass */
 body #container #main #search-results #site-preview img {
   width: 100px;
 }
-/* line 72, ../sass/results.sass */
+/* line 74, ../sass/results.sass */
 body #container #main #search-results #result-table_first, body #container #main #search-results #result-table_last {
   display: none;
 }
-/* line 74, ../sass/results.sass */
+/* line 76, ../sass/results.sass */
 body #container #main #search-results #result-table_next:hover, body #container #main #search-results #result-table_previous:hover {
   text-decoration: underline;
   cursor: pointer;
 }
-/* line 77, ../sass/results.sass */
+/* line 79, ../sass/results.sass */
 body #container #main #search-results #result-table_paginate {
   text-align: left;
   padding-top: 20px;
 }
-/* line 80, ../sass/results.sass */
+/* line 82, ../sass/results.sass */
 body #container #main #search-results #result-table_paginate span {
   color: #9100f3;
   padding: 5px 8px;
 }
-/* line 83, ../sass/results.sass */
+/* line 85, ../sass/results.sass */
 body #container #main #search-results #result-table_paginate span span:hover {
   background: #ededed;
   cursor: pointer;
 }
-/* line 86, ../sass/results.sass */
+/* line 88, ../sass/results.sass */
 body #container #main #search-results #result-table_wrapper {
   width: 512px;
 }
-/* line 88, ../sass/results.sass */
+/* line 90, ../sass/results.sass */
 body #container #main #search-results table {
   margin: 0;
   padding-top: 40px;
 }
-/* line 91, ../sass/results.sass */
+/* line 93, ../sass/results.sass */
 body #container #main #search-results table tbody {
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
-/* line 93, ../sass/results.sass */
+/* line 95, ../sass/results.sass */
 body #container #main #search-results table tbody tr > td {
   padding-bottom: 18px;
 }
-/* line 96, ../sass/results.sass */
+/* line 98, ../sass/results.sass */
 body #container #main #search-results table tbody tr td {
   background: white;
   color: #333333;
 }
-/* line 99, ../sass/results.sass */
+/* line 101, ../sass/results.sass */
 body #container #main #search-results table tbody tr td .title {
   color: #1122cc;
   font-size: 18px;
   text-decoration: underline;
 }
-/* line 103, ../sass/results.sass */
+/* line 105, ../sass/results.sass */
 body #container #main #search-results table tbody tr td .title:visited {
   color: #6611cc;
 }
-/* line 105, ../sass/results.sass */
+/* line 107, ../sass/results.sass */
 body #container #main #search-results table tbody tr td .url {
   color: #009933;
 }
