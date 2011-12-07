@@ -199,11 +199,19 @@ body a {
   text-decoration: none;
 }
 /* line 22, ../sass/results.sass */
+body #line {
+  position: absolute;
+  top: 190px;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid #dedede;
+}
+/* line 29, ../sass/results.sass */
 body #container {
   width: 960px;
   margin: 0 auto;
 }
-/* line 26, ../sass/results.sass */
+/* line 33, ../sass/results.sass */
 body #container header {
   font-family: Helvetica, Arial, sans-serif !important;
   font-style: normal;
@@ -219,12 +227,12 @@ body #container header {
   top: 0;
   left: 0;
 }
-/* line 34, ../sass/results.sass */
+/* line 41, ../sass/results.sass */
 body #container #main {
   padding: 40px;
   position: relative;
 }
-/* line 37, ../sass/results.sass */
+/* line 44, ../sass/results.sass */
 body #container #main #logo {
   font-family: "Annie Use Your Telescope", cursive;
   font-style: normal;
@@ -239,70 +247,94 @@ body #container #main #logo {
   top: 50px;
   left: -160px;
 }
-/* line 43, ../sass/results.sass */
+/* line 50, ../sass/results.sass */
 body #container #main #search-box {
   position: relative;
   margin: 0;
   padding: 5px 0 0;
   padding-top: 20px;
 }
-/* line 48, ../sass/results.sass */
+/* line 55, ../sass/results.sass */
 body #container #main #search-results {
-  width: 580px;
+  padding-top: 40px;
 }
-/* line 50, ../sass/results.sass */
+/* line 57, ../sass/results.sass */
+body #container #main #search-results #search-time {
+  color: #999999;
+  font-size: 13px;
+}
+/* line 60, ../sass/results.sass */
+body #container #main #search-results #site-preview {
+  position: fixed;
+  top: 190px;
+  right: 0;
+  background-color: #fafafa;
+  border-left: 1px solid #ebebeb;
+  padding: 22px 16px 10px 31px;
+  height: 100%;
+  width: 740px;
+}
+/* line 69, ../sass/results.sass */
+body #container #main #search-results #site-preview img {
+  width: 100px;
+}
+/* line 71, ../sass/results.sass */
 body #container #main #search-results #result-table_first, body #container #main #search-results #result-table_last {
   display: none;
 }
-/* line 52, ../sass/results.sass */
+/* line 73, ../sass/results.sass */
 body #container #main #search-results #result-table_next:hover, body #container #main #search-results #result-table_previous:hover {
   text-decoration: underline;
   cursor: pointer;
 }
-/* line 56, ../sass/results.sass */
+/* line 76, ../sass/results.sass */
 body #container #main #search-results #result-table_paginate {
   text-align: left;
   padding-top: 20px;
 }
-/* line 59, ../sass/results.sass */
+/* line 79, ../sass/results.sass */
 body #container #main #search-results #result-table_paginate span {
   color: #9100f3;
   padding: 5px 8px;
 }
-/* line 62, ../sass/results.sass */
+/* line 82, ../sass/results.sass */
 body #container #main #search-results #result-table_paginate span span:hover {
   background: #ededed;
   cursor: pointer;
 }
-/* line 65, ../sass/results.sass */
-body #container #main #search-results table {
-  width: 100%;
-  margin: 0;
+/* line 85, ../sass/results.sass */
+body #container #main #search-results #result-table_wrapper {
+  width: 512px;
 }
-/* line 68, ../sass/results.sass */
+/* line 87, ../sass/results.sass */
+body #container #main #search-results table {
+  margin: 0;
+  padding-top: 40px;
+}
+/* line 90, ../sass/results.sass */
 body #container #main #search-results table tbody {
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
-/* line 70, ../sass/results.sass */
+/* line 92, ../sass/results.sass */
 body #container #main #search-results table tbody tr > td {
   padding-bottom: 18px;
 }
-/* line 73, ../sass/results.sass */
+/* line 95, ../sass/results.sass */
 body #container #main #search-results table tbody tr td {
   background: white;
   color: #333333;
 }
-/* line 76, ../sass/results.sass */
+/* line 98, ../sass/results.sass */
 body #container #main #search-results table tbody tr td .title {
   color: #1122cc;
   font-size: 18px;
   text-decoration: underline;
 }
-/* line 80, ../sass/results.sass */
+/* line 102, ../sass/results.sass */
 body #container #main #search-results table tbody tr td .title:visited {
   color: #6611cc;
 }
-/* line 82, ../sass/results.sass */
+/* line 104, ../sass/results.sass */
 body #container #main #search-results table tbody tr td .url {
   color: #009933;
 }

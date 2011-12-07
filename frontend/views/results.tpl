@@ -35,8 +35,14 @@
         </div> <!--/search-box-->
         <div id="search-results">
           <div id="search-time">
-            Fetched {{ len(results) }} results ({{ time }} seconds)
-          </div>
+            %if len(results)>1:
+              Fetched {{len(results)}} results ({{time}} seconds)
+            %elif len(results)==1:
+              Fetched 1 result ({{time}} seconds)
+            %else:
+              No results found!
+            %end
+          </div> <!--/search-time-->
           <table id="result-table">
             <thead>
                 <tr>
@@ -47,21 +53,26 @@
               %for result in results:
               <tr class="link">
                 <td class="titlelink">
-                  <a class="title" href="#">{{ result[4] }}</a>
+                  <a class="title" href="{{result[3]}}">{{ result[4] }}</a>
                   <div class="url">{{ result[3] }}</div>
                   <div class="description">{{ result[5] }}</div>
                 </td>
               </tr>
               %end
-              <img src="http://do.convertapi.com/web2image?curl=http://www.utoronto.ca&PageWidth=100">
             </tbody>
           </table>
+          <div id="site-preview">
+            <a class="title" href="#">{{ result[4] }}</a>
+            <div class="url">{{ result[3] }}</div>
+            <!--<img src="http://do.convertapi.com/web2image?curl={{result[3]}}">-->
+          </div> <!--/site-preview-->
         </div> <!--/search-results-->
       </div> <!--/main-->
       <footer>
       </footer>
     </div> <!--/container-->
-
+    <div id="line"></div>
+    
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
     <script type="text/javascript" src="/static/vendor/jquery.infieldlabel.min.js"></script>
     <script type="text/javascript" src="/static/vendor/DataTables/jquery.dataTables.min.js"></script>
