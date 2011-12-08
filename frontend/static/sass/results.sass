@@ -132,23 +132,24 @@ body
               td .url
                 :color #093
               td.preview-arrow
-                :visibility hidden
-                :background #EEE
-                :width 30px
-                :height 60px
-                +border-radius(2px)
-                :border 1px solid #dcdcdc
-                :position relative
-                &.active
-                  :background #FAFAFA
+                div.wrapper
+                  :visibility hidden
+                  :background #EEE
+                  :width 30px
+                  :height 60px
+                  +border-radius(2px)
+                  :border 1px solid #dcdcdc
+                  :position relative
+                  &.active
+                    :background #FAFAFA
+                    div.arrow
+                      :opacity .9
                   div.arrow
-                    :opacity .9
-                div.arrow
-                  :background url(../images/arrow.png) 0 0 no-repeat
-                  :height 20px
-                  :margin-left 5px
-                  :margin-top -7px
-                  :position absolute
-                  :top 50%
-                  :width 18px
-                  :opacity .7
+                    :background url(../images/arrow.png) 0 0 no-repeat
+                    :height 20px
+                    :margin-left 5px
+                    :margin-top -7px
+                    :position absolute
+                    :top 50%
+                    :width 18px
+                    :opacity .7

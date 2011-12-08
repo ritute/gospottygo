@@ -57,7 +57,7 @@
                   <div class="url">{{ result[3] }}</div>
                   <div class="description">{{ result[5] }}</div>
                 </td>
-                <td class="preview-arrow"><div class="arrow"></div></td>
+                <td class="preview-arrow"><div class="wrapper"><div class="arrow"></div></div></td>
               </tr>
               %end
             </tbody>

@@ -31,11 +31,6 @@ function configTable() {
     //     $(this).show();
     // });
     
-    $('tr').hover(function(){
-        $(this).find('td.preview-arrow').css('visibility','visible');
-    }, function(){
-        $(this).find('td.preview-arrow').css('visibility','hidden');
-    });
     
     function getPreview(href) {
         
@@ -73,23 +68,51 @@ function configTable() {
         $('#site-preview').find('a.title').text( $tr.find('a.title').text() );
         $('#site-preview').find('a.title').attr('href', href);
         $('#site-preview').find('div.url').text(href);
+        
         $('#site-preview').hover(function(){
+            console.log('in site preview');
             inPreview = true;
+            $tr.find('td.preview-arrow div.wrapper').css('visibility','visible');
         }, function(){
+            console.log('out of site preview');
             inPreview = false;
+            $('#site-preview').hide();
+            $tr.find('td.preview-arrow div.wrapper').css('visibility','hidden');
         });
+        
         getPreview(href);
     }
-    
-    $('td.preview-arrow').hover(function(e){
-        e.preventDefault();
-        $(this).addClass('active');
+    // 
+    $('td.preview-arrow').hover(function(){
+        console.log('arrow hover');
         showPreview($(this).parent());
     }, function(){
-        if (!inPreview)
-            $(this).removeClass('active');
+        console.log('arrow blur');
+        if (inPreview)
+            console.log('in preview');
+        // if (!inPreview)
+        //     $(this).removeClass('active');
         //$('#site-preview').hide();
     });
+    
+    $('tr').hover(function(){
+        $(this).find('td.preview-arrow div.wrapper').css('visibility','visible');
+    }, function(){
+        $(this).find('td.preview-arrow div.wrapper').css('visibility','hidden');
+    });
+    // 
+    // inPreview = false;
+    // $('td.preview-arrow').click(function(){
+    //     alert('clicked');
+    //     if (inPreview) {
+    //         // Show preview
+    //         showPreview($(this).parent());
+    //     } else {
+    //         // Hide preview
+    //         $(this).css('visibility','hidden');
+    //         $('#site-preview').hide();
+    //     }
+    // });
 }
 
 $(function(){

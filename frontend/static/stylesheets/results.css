@@ -360,8 +360,8 @@ body #container #main #search-results table tbody tr td .title:visited {
 body #container #main #search-results table tbody tr td .url {
   color: #009933;
 }
-/* line 134, ../sass/results.sass */
-body #container #main #search-results table tbody tr td.preview-arrow {
+/* line 135, ../sass/results.sass */
+body #container #main #search-results table tbody tr td.preview-arrow div.wrapper {
   visibility: hidden;
   background: #eeeeee;
   width: 30px;
@@ -375,16 +375,16 @@ body #container #main #search-results table tbody tr td.preview-arrow {
   border: 1px solid #dcdcdc;
   position: relative;
 }
-/* line 142, ../sass/results.sass */
-body #container #main #search-results table tbody tr td.preview-arrow.active {
+/* line 143, ../sass/results.sass */
+body #container #main #search-results table tbody tr td.preview-arrow div.wrapper.active {
   background: #fafafa;
 }
-/* line 144, ../sass/results.sass */
-body #container #main #search-results table tbody tr td.preview-arrow.active div.arrow {
+/* line 145, ../sass/results.sass */
+body #container #main #search-results table tbody tr td.preview-arrow div.wrapper.active div.arrow {
   opacity: 0.9;
 }
-/* line 146, ../sass/results.sass */
-body #container #main #search-results table tbody tr td.preview-arrow div.arrow {
+/* line 147, ../sass/results.sass */
+body #container #main #search-results table tbody tr td.preview-arrow div.wrapper div.arrow {
   background: url(../images/arrow.png) 0 0 no-repeat;
   height: 20px;
   margin-left: 5px;
