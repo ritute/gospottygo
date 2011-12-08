@@ -22,7 +22,7 @@
           <form method="GET" action="/results">
             <ul>
               <li>
-                <label for="keyword" class="infield">What are you looking for?</label>
+                <label for="keyword" class="infield">What word are you looking for?</label>
                 <input type="text" name="keyword" id="keyword" maxlength="100" tabindex="1"/>
               </li>
               <li class="action">

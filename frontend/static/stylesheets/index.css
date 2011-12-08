@@ -227,7 +227,7 @@ body #container #main {
   -khtml-border-radius: 2px;
   border-radius: 2px;
 }
-/* line 50, ../sass/index.sass */
+/* line 49, ../sass/index.sass */
 body #container #main #logo {
   font-family: "Annie Use Your Telescope", cursive;
   font-style: normal;
@@ -243,7 +243,7 @@ body #container #main #logo {
   padding-top: 0;
   text-align: center;
 }
-/* line 58, ../sass/index.sass */
+/* line 57, ../sass/index.sass */
 body #container #main #logo h1 {
   background: url(../images/logo.png);
   width: 352px;
@@ -251,7 +251,19 @@ body #container #main #logo h1 {
   text-indent: -99999px;
   margin: 0 auto;
 }
-/* line 64, ../sass/index.sass */
+/* line 63, ../sass/index.sass */
+body #container #main #logo-about {
+  margin: 0 auto;
+  background: url(../images/logo.png) center center no-repeat;
+}
+/* line 66, ../sass/index.sass */
+body #container #main #logo-about a {
+  display: block;
+  width: 352px;
+  height: 88px;
+  text-indent: -99999px;
+}
+/* line 71, ../sass/index.sass */
 body #container #main #search-box {
   position: relative;
   margin: 0 auto;

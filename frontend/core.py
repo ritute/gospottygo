@@ -14,6 +14,12 @@ def static(path):
 def index():
   return {}
 
+# About view
+@get('/about')
+@view('about')
+def about():
+  return {}
+
 # Results view
 @get('/results')
 @view('results')
