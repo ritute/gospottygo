@@ -116,7 +116,7 @@ class crawler(object):
 if __name__=="__main__":
     print "STARTING CRAWLER..."
     
-    crawler().crawl()
+    #crawler().crawl()
 
     print "CRAWLER FINISHED"
     

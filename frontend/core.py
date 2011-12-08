@@ -19,6 +19,7 @@ def index():
 @view('results')
 def results():
   keyword = request.GET.get('keyword') # get keyword searched for from GET param
+  print "keyword", keyword
   start_time = time()
   results = search_query(keyword) # obtain search results
   print "results", results

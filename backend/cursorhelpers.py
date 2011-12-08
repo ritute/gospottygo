@@ -168,6 +168,7 @@ class PageRank(object):
         cursor.execute('insert into page_rank values (?,?)',(doc_id,page_rank))
         connection.commit()
 
+                
 class Join(object):
     """A class that performs queries on joins of tables """
     @classmethod
