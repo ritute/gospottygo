@@ -261,7 +261,7 @@ body #container #main #search-results #site-preview {
   display: none;
   position: absolute;
   top: 182px;
-  left: 580px;
+  left: 565px;
   min-width: 240px;
   bottom: 0;
   background-color: #fafafa;
@@ -362,7 +362,7 @@ body #container #main #search-results table tbody tr td .url {
 }
 /* line 134, ../sass/results.sass */
 body #container #main #search-results table tbody tr td.preview-arrow {
-  display: none;
+  visibility: hidden;
   background: #eeeeee;
   width: 30px;
   height: 60px;
@@ -376,6 +376,14 @@ body #container #main #search-results table tbody tr td.preview-arrow {
   position: relative;
 }
 /* line 142, ../sass/results.sass */
+body #container #main #search-results table tbody tr td.preview-arrow.active {
+  background: #fafafa;
+}
+/* line 144, ../sass/results.sass */
+body #container #main #search-results table tbody tr td.preview-arrow.active div.arrow {
+  opacity: 0.9;
+}
+/* line 146, ../sass/results.sass */
 body #container #main #search-results table tbody tr td.preview-arrow div.arrow {
   background: url(../images/arrow.png) 0 0 no-repeat;
   height: 20px;

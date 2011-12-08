@@ -67,7 +67,7 @@ body
           :display none
           :position absolute
           :top 182px
-          :left 580px
+          :left 565px
           :min-width 240px
           :bottom 0
           :background-color #FAFAFA
@@ -132,13 +132,17 @@ body
               td .url
                 :color #093
               td.preview-arrow
-                :display none
+                :visibility hidden
                 :background #EEE
                 :width 30px
                 :height 60px
                 +border-radius(2px)
                 :border 1px solid #dcdcdc
                 :position relative
+                &.active
+                  :background #FAFAFA
+                  div.arrow
+                    :opacity .9
                 div.arrow
                   :background url(../images/arrow.png) 0 0 no-repeat
                   :height 20px

@@ -21,6 +21,7 @@ def results():
   keyword = request.GET.get('keyword') # get keyword searched for from GET param
   start_time = time()
   results = search_query(keyword) # obtain search results
+  print "results", results
   end_time = time()
   elapsed_time = "%.4f" % (end_time - start_time) # elapsed time to obtain results in seconds
   return dict(keyword=keyword, results=results, time=elapsed_time)

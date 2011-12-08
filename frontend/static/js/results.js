@@ -32,9 +32,9 @@ function configTable() {
     // });
     
     $('tr').hover(function(){
-        $(this).find('td.preview-arrow').show();
+        $(this).find('td.preview-arrow').css('visibility','visible');
     }, function(){
-        $(this).find('td.preview-arrow').hide();
+        $(this).find('td.preview-arrow').css('visibility','hidden');
     });
     
     function getPreview(href) {
@@ -81,7 +81,8 @@ function configTable() {
         getPreview(href);
     }
     
-    $('td.preview-arrow').hover(function(){
+    $('td.preview-arrow').hover(function(e){
+        e.preventDefault();
         $(this).addClass('active');
         showPreview($(this).parent());
     }, function(){
