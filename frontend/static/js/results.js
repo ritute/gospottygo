@@ -85,13 +85,14 @@ function configTable() {
     // 
     $('td.preview-arrow').hover(function(){
         console.log('arrow hover');
+        $(this).addClass('active');
         showPreview($(this).parent());
     }, function(){
         console.log('arrow blur');
         if (inPreview)
             console.log('in preview');
-        // if (!inPreview)
-        //     $(this).removeClass('active');
+        if (!inPreview)
+            $(this).removeClass('active');
         //$('#site-preview').hide();
     });
     
