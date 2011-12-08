@@ -126,3 +126,5 @@ if __name__=="__main__":
     import pagerank
     pagerank.connection = db.connection
     pagerank.populate_page_rank()
+
+    print "FINISHED PAGERANK ALGORITHM"
