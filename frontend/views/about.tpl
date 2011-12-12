@@ -19,7 +19,7 @@
           <a href="/">go spotty go</a>
         </div>
         <div id="about-content">
-          <p>Welcome to go spotty go, a teeny Google! As part of our final project for CSC326 at UofT, we were required to design and develop a web application emulating a simplified version of Google's search engine. Our backend, written in Python, consists of a simple implementation of the PageRank algorithm based off of the following notes: <br/><br/>
+          <p>Welcome to go spotty go, a teeny Google! As part of our final weekend project for CSC326 at UofT, we were required to design and develop a web application emulating a simplified version of Google's search engine. Our backend, written in Python, consists of a simple implementation of the PageRank algorithm based off of the following notes: <br/><br/>
         [1] <a href="http://www.eecg.toronto.edu/~jzhu/csc326/readings/Google.pdf">Professor Jzhu's Notes</a> 
         <br/>[2] <a href="http://infolab.stanford.edu/~backrub/google.html">Stanford University's Notes</a>
         <br/><br/>
