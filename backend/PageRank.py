@@ -1,13 +1,14 @@
 import cursorhelpers as db
 '''
 
-Step #5: PageRank
+PageRank
 
-Uses the Links database table to generate rankings of pages.
+--Generates graph to compute rankings of pages.
 
 '''
 
 class Node(object):
+    """This is a node in the graph"""
     def __init__(self,doc_id,url,outgoing_links=None, score =0):
         self.doc_id = doc_id
         self.url = url
@@ -23,6 +24,7 @@ class Node(object):
         self.num_outgoing=len(self.outgoing_links)
     
 def load_graph():
+    """Load all nodes and edges of the graph"""
     #tuples of (id,url)
     raw_nodes = db.Document.get_all_words()
     nodes = {tup[0]:Node(tup[0],tup[1]) for tup in raw_nodes}
@@ -62,12 +64,14 @@ def get_seed_nodes_and_set_seeds(nodes):
     return node_seed_list
 
 def populate_page_rank():
+    """Compute the page rank and populate these in the database"""
     nodes_dict = compute_page_rank()
     nodes = nodes_dict.values()
     for node in nodes:
         db.PageRank.insert_page_rank(node.doc_id,node.score)
 
 def compute_page_rank():
+    """Compute the page rank for every node in a set of seed nodes"""
     nodes = load_graph() 
     seed_nodes = get_seed_nodes_and_set_seeds(nodes)
     #print_nodes(seed_nodes)
@@ -80,6 +84,7 @@ def compute_page_rank():
     return nodes
 
 def recursively_propagate_rank(node, depth_remaining=3):
+    """Recursively propogate through nodes to compute score"""
     if (depth_remaining == 0):
         return
 
@@ -95,6 +100,8 @@ def recursively_propagate_rank(node, depth_remaining=3):
         recursively_propagate_rank(outnode,depth_remaining-1)
 
 def print_nodes(nodes):
+    '''This function is used only for debugging purposes to print 
+    out detailed information.'''
     print "print_nodes"
     if isinstance(nodes,dict):
         nodes = nodes.values() #make nodes a list of nodes

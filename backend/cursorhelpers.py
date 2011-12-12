@@ -26,7 +26,7 @@ class DataBase(object):
             connection.cursor().execute('CREATE TABLE document (url_id INTEGER PRIMARY KEY ASC AUTOINCREMENT, url VARCHAR(255) UNIQUE NOT NULL, title VARCHAR(255), descrip TEXT)')
             connection.cursor().execute('CREATE TABLE link ( from_doc_id INTEGER NOT NULL REFERENCES document(url_id), to_doc_id INTEGER NOT NULL REFERENCES document(url_id), freq UNSIGNED INTEGER, PRIMARY KEY(from_doc_id, to_doc_id))')
             connection.cursor().execute('CREATE TABLE doc_word_index ( doc_id INTEGER REFERENCES document(url_id), word_id INTEGER REFERENCES lexicon(word_id), freq UNSIGNED INTEGER, PRIMARY KEY(doc_id, word_id))')
-            connection.cursor().execute('CREATE TABLE page_rank(doc_id INTEGER REFERENCES document(url_id), page_rank INTEGER, PRIMARY KEY(doc_id))')
+            connection.cursor().execute('CREATE TABLE page_rank(doc_id INTEGER REFERENCES document(url_id), page_rank TEXT, PRIMARY KEY(doc_id))')
             connection.commit()
         except:
             print "Error in trying to create tables!\n"
@@ -42,13 +42,14 @@ class DocLexBaseDB(object):
     #class methods
     @classmethod
     def get_all_words(cls):
+        """Return list of all words in table"""
         cursor = connection.cursor()
         cursor.execute("SELECT * FROM %s"%cls.DBNAME)
         return list(cursor)
 
     @classmethod
     def insert(cls,word):
-        """Return True if success and False if failure"""
+        """Inserts word into table. Return True if success and False if failure"""
         if len(word)>cls.MAXWORDLEN:
             return False
 
@@ -101,6 +102,8 @@ class Document(DocLexBaseDB):
     
     @classmethod
     def add_title_and_description(cls, doc_id, title, descrip):
+        """This method is specific to only the Document class. It adds title and description
+        to the table for a given url."""
         try:
             connection.cursor().execute("UPDATE %s SET title=?, descrip=? WHERE url_id=?"%(cls.DBNAME),(title, descrip, doc_id))
             connection.commit()
@@ -165,7 +168,7 @@ class PageRank(object):
     @classmethod
     def insert_page_rank(cls,doc_id,page_rank):
         cursor = connection.cursor()
-        cursor.execute('insert into page_rank values (?,?)',(doc_id,page_rank))
+        cursor.execute('insert into page_rank values (?,?)',(doc_id,"%s"%page_rank))
         connection.commit()
 
                 

@@ -1,4 +1,3 @@
-http://google.com|900000
 http://google.ca|900000
 http://www.wikipedia.org/|500000
 http://ca.yahoo.com/|5000000
